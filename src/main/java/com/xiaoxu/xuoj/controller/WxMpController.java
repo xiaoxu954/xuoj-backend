@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 微信公众号相关接口
- **/
+ */
 @RestController
 @RequestMapping("/")
 @Slf4j
