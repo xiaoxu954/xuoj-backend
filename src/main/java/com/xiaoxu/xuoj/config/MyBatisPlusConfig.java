@@ -9,10 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MyBatis Plus 配置
- *
  */
 @Configuration
-@MapperScan("com.xiaoxu.xuoj.mapper")
+//@MapperScan("com.xiaoxu.xuoj.mapper")
 public class MyBatisPlusConfig {
 
     /**

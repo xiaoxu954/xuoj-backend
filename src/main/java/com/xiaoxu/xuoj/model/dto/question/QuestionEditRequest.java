@@ -48,6 +48,5 @@ public class QuestionEditRequest implements Serializable {
     private JudgeConfig judgeConfig;
 
 
-
     private static final long serialVersionUID = 1L;
 }

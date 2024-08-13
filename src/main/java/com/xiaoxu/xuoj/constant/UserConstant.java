@@ -2,7 +2,6 @@ package com.xiaoxu.xuoj.constant;
 
 /**
  * 用户常量
- *
  */
 public interface UserConstant {
 

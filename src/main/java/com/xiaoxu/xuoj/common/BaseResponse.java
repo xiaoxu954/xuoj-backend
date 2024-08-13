@@ -1,6 +1,7 @@
 package com.xiaoxu.xuoj.common;
 
 import java.io.Serializable;
+
 import lombok.Data;
 
 /**

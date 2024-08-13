@@ -10,22 +10,11 @@ import com.xiaoxu.xuoj.config.WxOpenConfig;
 import com.xiaoxu.xuoj.constant.UserConstant;
 import com.xiaoxu.xuoj.exception.BusinessException;
 import com.xiaoxu.xuoj.exception.ThrowUtils;
-import com.xiaoxu.xuoj.model.dto.user.UserAddRequest;
-import com.xiaoxu.xuoj.model.dto.user.UserLoginRequest;
-import com.xiaoxu.xuoj.model.dto.user.UserQueryRequest;
-import com.xiaoxu.xuoj.model.dto.user.UserRegisterRequest;
-import com.xiaoxu.xuoj.model.dto.user.UserUpdateMyRequest;
-import com.xiaoxu.xuoj.model.dto.user.UserUpdateRequest;
+import com.xiaoxu.xuoj.model.dto.user.*;
 import com.xiaoxu.xuoj.model.entity.User;
 import com.xiaoxu.xuoj.model.vo.LoginUserVO;
 import com.xiaoxu.xuoj.model.vo.UserVO;
 import com.xiaoxu.xuoj.service.UserService;
-
-import java.util.List;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 import me.chanjar.weixin.common.bean.oauth2.WxOAuth2AccessToken;
@@ -33,12 +22,12 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import static com.xiaoxu.xuoj.service.impl.UserServiceImpl.SALT;
 
