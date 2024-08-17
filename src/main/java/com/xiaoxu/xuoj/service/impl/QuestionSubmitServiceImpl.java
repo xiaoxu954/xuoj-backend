@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoxu.xuoj.common.ErrorCode;
 import com.xiaoxu.xuoj.constant.CommonConstant;
 import com.xiaoxu.xuoj.exception.BusinessException;
+import com.xiaoxu.xuoj.judge.JudgeService;
 import com.xiaoxu.xuoj.mapper.QuestionSubmitMapper;
 import com.xiaoxu.xuoj.model.dto.questionsubmit.QuestionSubmitAddRequest;
 import com.xiaoxu.xuoj.model.dto.questionsubmit.QuestionSubmitQueryRequest;
@@ -22,11 +23,13 @@ import com.xiaoxu.xuoj.service.UserService;
 import com.xiaoxu.xuoj.utils.SqlUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 /**
@@ -43,6 +46,10 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
 
     @Resource
     private UserService userService;
+
+    @Resource
+    @Lazy
+    private JudgeService judgeService;
 
 
     /**
@@ -70,7 +77,6 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         // 是否已提交题目
         long userId = loginUser.getId();
         // 每个用户串行提交题目
-        //
         QuestionSubmit questionSubmit = new QuestionSubmit();
         questionSubmit.setUserId(userId);
         questionSubmit.setQuestionId(questionId);
@@ -84,7 +90,14 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "数据插入失败");
 
         }
-        return questionSubmit.getId();
+        Long questionSubmitId = questionSubmit.getId();
+        //执行判题服务
+        CompletableFuture.runAsync(() -> {
+            judgeService.doJudge(questionSubmitId);
+
+        });
+
+        return questionSubmitId;
     }
 
     /**

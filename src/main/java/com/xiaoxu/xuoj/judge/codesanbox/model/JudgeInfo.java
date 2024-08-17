@@ -1,4 +1,4 @@
-package com.xiaoxu.xuoj.model.dto.questionsubmit;
+package com.xiaoxu.xuoj.judge.codesanbox.model;
 
 import lombok.Data;
 
@@ -11,15 +11,15 @@ public class JudgeInfo {
     /**
      * 程序执行信息
      */
-    private Long message;
+    private String message;
 
     /**
      * 消耗内存（KB）
      */
-    private String memory;
+    private Integer memory;
 
     /**
      * 消耗时间（KB）
      */
-    private String time;
+    private Integer time;
 }

@@ -4,7 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.xiaoxu.xuoj.model.dto.questionsubmit.JudgeInfo;
+import com.xiaoxu.xuoj.judge.codesanbox.model.JudgeInfo;
 import com.xiaoxu.xuoj.model.entity.QuestionSubmit;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;

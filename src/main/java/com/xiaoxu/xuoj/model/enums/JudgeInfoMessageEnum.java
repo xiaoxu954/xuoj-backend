@@ -1,7 +1,5 @@
 package com.xiaoxu.xuoj.model.enums;
 
-import com.sun.jna.Memory;
-import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.Arrays;
@@ -11,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * 题目提交编程语言枚举
  */
-public enum JudegeInfoMessageEnum {
+public enum JudgeInfoMessageEnum {
 
     ACCEPTED("成功", "Accepted"),
     WRONG_ANSWER(" Wrong Answer", "答案错误"),
@@ -29,7 +27,7 @@ public enum JudegeInfoMessageEnum {
 
     private final String value;
 
-    JudegeInfoMessageEnum(String text, String value) {
+    JudgeInfoMessageEnum(String text, String value) {
         this.text = text;
         this.value = value;
     }
@@ -49,11 +47,11 @@ public enum JudegeInfoMessageEnum {
      * @param value
      * @return
      */
-    public static JudegeInfoMessageEnum getEnumByValue(String value) {
+    public static JudgeInfoMessageEnum getEnumByValue(String value) {
         if (ObjectUtils.isEmpty(value)) {
             return null;
         }
-        for (JudegeInfoMessageEnum anEnum : JudegeInfoMessageEnum.values()) {
+        for (JudgeInfoMessageEnum anEnum : JudgeInfoMessageEnum.values()) {
             if (anEnum.value.equals(value)) {
                 return anEnum;
             }
